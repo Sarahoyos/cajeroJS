@@ -37,16 +37,12 @@ function consignarDinero(monto) {
     return true;
 }
 
-// Método para consultar saldo
 function consultarSaldo() {
     console.log(`Su saldo actual es: $${saldoCuenta.toLocaleString()}`);
     return saldoCuenta;
 }
 
 // Método principal
-if (inicioSesion()) {
-    ejecutarSistemaBancario();
-}
 
 function ejecutarSistemaBancario() {
     console.log("Sistema bancario iniciado");
@@ -99,4 +95,6 @@ Seleccione una opción (1-4):
         
     }
 }
-ejecutarSistemaBancario();
+if (inicioSesion()) {
+    ejecutarSistemaBancario();
+}
