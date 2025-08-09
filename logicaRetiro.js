@@ -8,11 +8,13 @@ function mostrarBienvenida() {
 
 function retirarDinero(monto){
     if (monto <= 0) {
+        alert("Error, el monto sólo puede contener números positivos");
         console.log("Error, el monto sólo puede contener números positivos");
         return false;
     }
     
     if (monto > saldoCuenta) {
+        alert("Error: Saldo insuficiente.");
         console.log(`Error: Saldo insuficiente. Su saldo actual es: $${saldoCuenta.toLocaleString()}`);
         return false;
     }
@@ -42,7 +44,9 @@ function consultarSaldo() {
 }
 
 // Método principal
+// Make sure the function is defined in the global scope
 function ejecutarSistemaBancario() {
+    console.log("Sistema bancario iniciado");
     let continuar = true;
     
  
@@ -53,14 +57,12 @@ function ejecutarSistemaBancario() {
         let menuInicial = `
 
            MENÚ PRINCIPAL            
+Seleccione una opción (1-4):
 
 1. Retirar dinero                 
 2. Consignar dinero               
 3. Consultar saldo                
-4. Salir                          
-
-
-Seleccione una opción (1-4): `;
+4. Salir                          `;
 
         let opcion = prompt(menuInicial);
         
