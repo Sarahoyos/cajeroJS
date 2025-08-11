@@ -44,7 +44,10 @@ function consultarSaldo() {
 }
 
 // Método principal
-// Make sure the function is defined in the global scope
+if (inicioSesion()) {
+    ejecutarSistemaBancario();
+}
+
 function ejecutarSistemaBancario() {
     console.log("Sistema bancario iniciado");
     let continuar = true;
