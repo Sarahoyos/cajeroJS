@@ -26,7 +26,3 @@ function inicioSesion() {
     }
     return false;
 }
-
-if (inicioSesion()) {
-    ejecutarSistemaBancario();
-}

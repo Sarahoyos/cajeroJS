@@ -59,5 +59,3 @@ function registro(){
     Contraseña: ************\n
     Si crees que hubo algun error comunicate a la linea 018000422222`)
 }
-
-registro();
