@@ -2,11 +2,11 @@ let saldoCuenta = 50000;
 let nombreUsuario = "Juan Pérez"; 
 
 function mostrarBienvenida() {
-    console.log("\n Bienvenido al sistema bancario ");
+    console.log("\nBienvenido al sistema bancario");
     console.log(`Usuario: ${nombreUsuario}`);
     console.log(`Saldo actual: ${saldoCuenta.toLocaleString()}`);}
 
-function retirarDinero(monto){
+function retirarDinero(monto) {
     if (monto <= 0) {
         alert("Error, el monto sólo puede contener números positivos");
         console.log("Error, el monto sólo puede contener números positivos");
@@ -59,7 +59,7 @@ function ejecutarSistemaBancario() {
  
         let menuInicial = `
 
-           MENÚ PRINCIPAL            
+MENÚ PRINCIPAL            
 Seleccione una opción (1-4):
 
 1. Retirar dinero                 
@@ -99,4 +99,3 @@ Seleccione una opción (1-4):
         
     }
 }
-ejecutarSistemaBancario();

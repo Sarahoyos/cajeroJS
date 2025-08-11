@@ -27,7 +27,7 @@ function validacionEmail(){
 
 
 
-function registro(){
+function registroUsuario() {
     doc_id = parseInt(prompt("\n Ingrese su identificacion"))
     usuario = prompt("\n Ingrese su usuario")
     email = validacionEmail();
@@ -58,4 +58,6 @@ function registro(){
     Email: ${email}\n
     Contraseña: ************\n
     Si crees que hubo algun error comunicate a la linea 018000422222`)
+
+    return true
 }
