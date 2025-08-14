@@ -9,7 +9,7 @@ while (opcion !== 3) {
 
   switch (opcion) {
     case 1:
-      {
+       if (inicioSesion()) {
         ejecutarSistemaBancario();
       }
       break;

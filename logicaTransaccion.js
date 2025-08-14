@@ -1,58 +1,71 @@
-let saldoCuenta = 50000; 
-let nombreUsuario = "Juan Pérez"; 
+let saldoCuenta = 0; 
 
 function mostrarBienvenida() {
-    console.log("\nBienvenido al sistema bancario");
-    console.log(`Usuario: ${nombreUsuario}`);
-    console.log(`Saldo actual: ${saldoCuenta.toLocaleString()}`);}
+    let nombreUsuario = localStorage.getItem("user") || "Usuario desconocido";
+    alert(`Bienvenido al sistema bancario\n` +
+        `------------------------------\n` +
+        `Usuario: ${nombreUsuario}\n` +
+        `Saldo actual: $${saldoCuenta.toLocaleString()}\n` +
+        `------------------------------`
+    );
+}   
 
 function retirarDinero(monto) {
     if (monto <= 0) {
         alert("Error, el monto sólo puede contener números positivos");
-        console.log("Error, el monto sólo puede contener números positivos");
         return false;
     }
     
     if (monto > saldoCuenta) {
-        alert("Error: Saldo insuficiente.");
-        console.log(`Error: Saldo insuficiente. Su saldo actual es: $${saldoCuenta.toLocaleString()}`);
+        alert(`Error: Saldo insuficiente. Su saldo actual es: $${saldoCuenta.toLocaleString()}`);
         return false;
     }
     
     saldoCuenta -= monto;
-    console.log(`Retiro exitoso de $${monto.toLocaleString()}`);
-    console.log(`Su saldo actual es: $${saldoCuenta.toLocaleString()}`);
+alert(
+        `Retiro exitoso\n` +
+        `------------------------------\n` +
+        `Monto retirado: $${monto.toLocaleString()}\n` +
+        `Saldo actual: $${saldoCuenta.toLocaleString()}\n` +
+        `------------------------------`
+    );
     return true;
 }
 
 function consignarDinero(monto) {
     if (monto <= 0) {
-        console.log("Error, el monto sólo puede contener números positivos");
+        alert("Error, el monto sólo puede contener números positivos");
         return false;
     }
     
     saldoCuenta += monto;
-    console.log(`Consignación exitosa de $${monto.toLocaleString()}`);
-    console.log(`Su saldo actual es: $${saldoCuenta.toLocaleString()}`);
+   alert(
+        `Consignación exitosa\n` +
+        `------------------------------\n` +
+        `Monto consignado: $${monto.toLocaleString()}\n` +
+        `Saldo actual: $${saldoCuenta.toLocaleString()}\n` +
+        `------------------------------`
+    );
     return true;
 }
 
-// Método para consultar saldo
 function consultarSaldo() {
-    console.log(`Su saldo actual es: $${saldoCuenta.toLocaleString()}`);
+    let nombreUsuario = localStorage.getItem("user") || "Usuario desconocido";
+   alert(
+        `Consulta de saldo\n` +
+        `------------------------------\n` +
+        `Usuario: ${nombreUsuario}\n` +
+        `Saldo actual: $${saldoCuenta.toLocaleString()}\n` +
+        `------------------------------`
+    );
     return saldoCuenta;
 }
 
 // Método principal
-if (inicioSesion()) {
-    ejecutarSistemaBancario();
-}
 
 function ejecutarSistemaBancario() {
-    console.log("Sistema bancario iniciado");
     let continuar = true;
     
- 
     mostrarBienvenida();
     
     while (continuar) {
@@ -71,30 +84,29 @@ Seleccione una opción (1-4):
         
         switch (opcion) {
             case "1":
-                console.log("\n--- RETIRAR DINERO ---");
                 let montoRetiro = parseFloat(prompt("Ingrese el monto a retirar: $"));
                 retirarDinero(montoRetiro);
                 break;
                 
             case "2":
-                console.log("\n--- CONSIGNAR DINERO ---");
                 let montoConsignacion = parseFloat(prompt("Ingrese el monto a consignar: $"));
                 consignarDinero(montoConsignacion);
                 break;
                 
             case "3":
-                console.log("\n--- CONSULTAR SALDO ---");
                 consultarSaldo();
                 break;
                 
             case "4":
-                console.log("\n Gracias por usar nuestro sistema bancario ");
-                console.log(" Hasta luego");
+                alert(
+                    `Gracias por usar nuestro sistema bancario\n` +
+                    `Hasta luego`
+                );
                 continuar = false;
                 break;
                 
             default:
-                console.log("Opción inválida. Por favor seleccione una opción entre 1 y 4.");
+                alert("Opción inválida. Por favor seleccione una opción entre 1 y 4.");
         }
         
     }
