@@ -1,12 +1,10 @@
 let intentoMax = 3;
 
 function inicioSesion() {
-    
+    let user = prompt("Ingrese su usuario:");
+    let password = prompt("Ingrese su contraseña:");
     
     for (let conIntentos = 1; conIntentos <= intentoMax; conIntentos++) {
-        let user = prompt("Ingrese su usuario:");
-        let password = prompt("Ingrese su contraseña:");
-
         if (user === "admin" && password === "1234") {
             console.log("Inicio de sesión exitoso.");
             return true; 
@@ -25,4 +23,7 @@ function inicioSesion() {
     }
     return false;
 }
-inicioSesion()
+
+if (inicioSesion()) {
+    ejecutarSistemaBancario();
+}
