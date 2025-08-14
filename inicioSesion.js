@@ -2,10 +2,14 @@ let intentoMax = 3;
 
 function inicioSesion() {
     let user = prompt("Ingrese su usuario:");
+    const userStorage = localStorage.getItem("user");
+
     let password = prompt("Ingrese su contraseña:");
+    const passwStorage = localStorage.getItem("password");
+
     
     for (let conIntentos = 1; conIntentos <= intentoMax; conIntentos++) {
-        if (user === "admin" && password === "1234") {
+        if (user === userStorage && password === passwStorage) {
             console.log("Inicio de sesión exitoso.");
             return true; 
         }

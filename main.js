@@ -1,6 +1,6 @@
 let opcion;
 
-do {
+while (opcion !== 3) {
   opcion = parseInt(
     prompt(
       "Bienvenido a Banchibchombia \nPorfavor seleecione una opción valida\n1. Iniciar sesión\n2. Quiero registrarme\n3. Salir"
@@ -31,4 +31,4 @@ do {
       }
       break;
   }
-} while (opcion !== 3);
+}
