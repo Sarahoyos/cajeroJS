@@ -26,11 +26,24 @@ function validacionEmail() {
 }
 
 function registroUsuario() {
-  doc_id = prompt("\n Ingrese su identificacion");
+
+  do{
+  doc_id = prompt("\n Ingrese su identificacion (Solo numeros)");
   localStorage.setItem("id", doc_id);
 
+  if(doc_id===null || doc_id.trim()===""){
+    alert("No puede estar vacio")
+  }
+  } while (doc_id===null || doc_id.trim()==="")
+
+  do{
   usuario = prompt("\n Ingrese su usuario");
   localStorage.setItem("user", usuario);
+    if(usuario===null || usuario.trim()===""){
+    alert("No puede estar vacio")
+  }
+
+  }while (usuario===null || usuario.trim()==="")
 
   email = validacionEmail();
   localStorage.setItem("mail", email);
