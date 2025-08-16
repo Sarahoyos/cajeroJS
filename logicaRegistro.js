@@ -31,19 +31,19 @@ function registroUsuario() {
   doc_id = prompt("\n Ingrese su identificacion (Solo numeros)");
   localStorage.setItem("id", doc_id);
 
-  if(doc_id===null || doc_id.trim()===""){
+  if(doc_id===null || doc_id===""){
     alert("No puede estar vacio")
   }
-  } while (doc_id===null || doc_id.trim()==="")
+  } while (doc_id===null || doc_id==="")
 
   do{
   usuario = prompt("\n Ingrese su usuario");
   localStorage.setItem("user", usuario);
-    if(usuario===null || usuario.trim()===""){
+    if(usuario===null || usuario===""){
     alert("No puede estar vacio")
   }
 
-  }while (usuario===null || usuario.trim()==="")
+  }while (usuario===null || usuario==="")
 
   email = validacionEmail();
   localStorage.setItem("mail", email);
