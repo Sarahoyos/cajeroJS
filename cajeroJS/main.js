@@ -1,9 +1,15 @@
+
+import {registroUsuario} from "./logicaRegistro.js";
+import {cambioContrasena} from "./cambioContrasena.js";
+import {inicioSesion} from "./inicioSesion.js";
+import {ejecutarSistemaBancario} from "./logicaTransaccion.js";
+
 let opcion;
 
-while (opcion !== 3) {
+while (opcion !== 4) {
   opcion = parseInt(
     prompt(
-      "Bienvenido a Banchibchombia \nPorfavor seleecione una opción valida\n1. Iniciar sesión\n2. Quiero registrarme\n3.Cambiar contraseña\n4. Salir"
+      "Bienvenido a Banchibchombia \nPorfavor seleecione una opción valida\n1. Iniciar sesión\n2. Quiero registrarme\n3. Cambiar contraseña\n4. Salir"
     )
   );
 
