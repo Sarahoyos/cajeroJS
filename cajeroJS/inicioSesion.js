@@ -1,6 +1,6 @@
 let intentoMax = 3;
 
-function inicioSesion() {
+export function inicioSesion() {
     let user = prompt("Ingrese su usuario:");
     const userStorage = localStorage.getItem("user");
 

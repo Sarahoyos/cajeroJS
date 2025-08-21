@@ -63,7 +63,7 @@ function consultarSaldo() {
 
 // Método principal
 
-function ejecutarSistemaBancario() {
+export function ejecutarSistemaBancario() {
     let continuar = true;
     
     mostrarBienvenida();

@@ -25,7 +25,7 @@ function validacionEmail() {
   return email;
 }
 
-function registroUsuario() {
+export function registroUsuario() {
 
   do{
   doc_id = prompt("\n Ingrese su identificacion (Solo numeros)");

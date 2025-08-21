@@ -3,7 +3,7 @@ const passwStorage = localStorage.getItem("password");
 let intentos = 0;
 let intentoMax = 3;
 
-function cambioContrasena() {
+export function cambioContrasena() {
   do {
     alert("¡Bienvenido al modulo para cambio de contraseña!\nLe solicitaremos su contraseña actual por lo que debe recordarla.");
     let password = prompt("Ingrese su contraseña actual");
