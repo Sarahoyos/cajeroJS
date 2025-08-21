@@ -1,4 +1,4 @@
-let saldoCuenta = 0; 
+let saldoCuenta = parseFloat(localStorage.getItem("saldo")) || 0; 
 
 function mostrarBienvenida() {
     let nombreUsuario = localStorage.getItem("user") || "Usuario desconocido";
@@ -22,6 +22,7 @@ function retirarDinero(monto) {
     }
     
     saldoCuenta -= monto;
+    localStorage.setItem("saldo", saldoCuenta); //  Guardar nuevo saldo
 alert(
         `Retiro exitoso\n` +
         `------------------------------\n` +
@@ -39,6 +40,7 @@ function consignarDinero(monto) {
     }
     
     saldoCuenta += monto;
+    localStorage.setItem("saldo", saldoCuenta); //  Guardar nuevo saldo
    alert(
         `Consignación exitosa\n` +
         `------------------------------\n` +
