@@ -16,6 +16,12 @@ function mostrarBienvenida() {
 }   
 
 function retirarDinero(monto) {
+   
+    if (Number.isNaN(monto)) {
+        alert("Operación cancelada o valor no válido.");
+        return false;
+    }
+
     if (monto <= 0) {
         alert("Error, el monto sólo puede contener números positivos");
         return false;
@@ -47,6 +53,12 @@ function retirarDinero(monto) {
 }
 
 function consignarDinero(monto) {
+    
+    if (Number.isNaN(monto)) {
+        alert("Operación cancelada o valor no válido.");
+        return false;
+    }
+
     if (monto <= 0) {
         alert("Error, el monto sólo puede contener números positivos");
         return false;
@@ -112,13 +124,25 @@ Seleccione una opción (1-5):
         
         switch (opcion) {
             case "1":
-                let montoRetiro = parseFloat(prompt("Ingrese el monto a retirar: $"));
-                retirarDinero(montoRetiro);
+                let inputRetiro = prompt("Ingrese el monto a retirar: $");
+                // Aqui hacemos la opcion de cancelar la operacion con el prompt
+                if (inputRetiro === null) {
+                    alert("Operación de retiro cancelada.");
+                } else {
+                    let montoRetiro = parseFloat(inputRetiro);
+                    retirarDinero(montoRetiro);
+                }
                 break;
                 
             case "2":
-                let montoConsignacion = parseFloat(prompt("Ingrese el monto a consignar: $"));
-                consignarDinero(montoConsignacion);
+                let inputConsignacion = prompt("Ingrese el monto a consignar: $");
+                
+                if (inputConsignacion === null) {
+                    alert("Operación de consignación cancelada.");
+                } else {
+                    let montoConsignacion = parseFloat(inputConsignacion);
+                    consignarDinero(montoConsignacion);
+                }
                 break;
                 
             case "3":

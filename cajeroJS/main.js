@@ -3,7 +3,6 @@ import {registroUsuario} from "./logicaRegistro.js";
 import {cambioContrasena} from "./cambioContrasena.js";
 import {inicioSesion} from "./inicioSesion.js";
 import {ejecutarSistemaBancario} from "./logicaTransaccion.js";
-import consultarMovimientos from "./logicaMovimiento.js";
 
 let opcion;
 
@@ -30,12 +29,7 @@ while (opcion !== 4) {
         cambioContrasena();
       }
       break;
-
       case 4:
-        {
-          consultarMovimientos();
-        }
-      case 5:
       {
         alert(
           "Su sesión ha sido cerrada, gracias por comunicarse con Banchibchombia"

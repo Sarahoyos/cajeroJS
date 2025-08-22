@@ -19,7 +19,7 @@ function consultarMovimientos() {
     console.log("=== HISTORIAL DE MOVIMIENTOS ===");
     console.log(`${tipoOperacion}: $${monto.toLocaleString()} - Fecha: ${fecha}`);
     alert(`=== HISTORIAL DE MOVIMIENTOS ===
-      +${tipoOperacion}: $${monto.toLocaleString()} - Fecha: ${fecha}`);
+    ${tipoOperacion}: $${monto.toLocaleString()} - Fecha: ${fecha}`);
     
   });
 }
