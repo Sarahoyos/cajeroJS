@@ -5,11 +5,11 @@ function consultarMovimientos() {
   
   if (historialTransacciones.length === 0) {
     console.log("No hay movimientos registrados.");
+    alert("No hay movimientos registrados.");
     return;
   }
   
-  alert(`=== HISTORIAL DE MOVIMIENTOS ===
-    +${tipoOperacion}: $${monto.toLocaleString()} - Fecha: ${fecha}`);
+
 
   
   historialTransacciones.forEach((transaccion) => {
@@ -18,7 +18,8 @@ function consultarMovimientos() {
     const monto = transaccion.monto;
     console.log("=== HISTORIAL DE MOVIMIENTOS ===");
     console.log(`${tipoOperacion}: $${monto.toLocaleString()} - Fecha: ${fecha}`);
-    
+    alert(`=== HISTORIAL DE MOVIMIENTOS ===
+      +${tipoOperacion}: $${monto.toLocaleString()} - Fecha: ${fecha}`);
     
   });
 }
