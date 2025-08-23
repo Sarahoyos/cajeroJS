@@ -1,4 +1,9 @@
+import consultarMovimientos from "./logicaMovimiento.js";
+
 let saldoCuenta = parseFloat(localStorage.getItem("saldo")) || 0; 
+
+
+const historialTransacciones = [];
 
 function mostrarBienvenida() {
     let nombreUsuario = localStorage.getItem("user") || "Usuario desconocido";
@@ -11,6 +16,12 @@ function mostrarBienvenida() {
 }   
 
 function retirarDinero(monto) {
+   
+    if (Number.isNaN(monto)) {
+        alert("Operación cancelada o valor no válido.");
+        return false;
+    }
+
     if (monto <= 0) {
         alert("Error, el monto sólo puede contener números positivos");
         return false;
@@ -23,17 +34,31 @@ function retirarDinero(monto) {
     
     saldoCuenta -= monto;
     localStorage.setItem("saldo", saldoCuenta); //  Guardar nuevo saldo
-alert(
+    alert(
         `Retiro exitoso\n` +
         `------------------------------\n` +
         `Monto retirado: $${monto.toLocaleString()}\n` +
         `Saldo actual: $${saldoCuenta.toLocaleString()}\n` +
         `------------------------------`
     );
+
+    
+    historialTransacciones.push({
+        tipo: 'retiro',
+        monto: monto,
+        fecha: new Date().toLocaleString()
+    });
+
     return true;
 }
 
 function consignarDinero(monto) {
+    
+    if (Number.isNaN(monto)) {
+        alert("Operación cancelada o valor no válido.");
+        return false;
+    }
+
     if (monto <= 0) {
         alert("Error, el monto sólo puede contener números positivos");
         return false;
@@ -41,19 +66,27 @@ function consignarDinero(monto) {
     
     saldoCuenta += monto;
     localStorage.setItem("saldo", saldoCuenta); //  Guardar nuevo saldo
-   alert(
+    alert(
         `Consignación exitosa\n` +
         `------------------------------\n` +
         `Monto consignado: $${monto.toLocaleString()}\n` +
         `Saldo actual: $${saldoCuenta.toLocaleString()}\n` +
         `------------------------------`
     );
+
+    
+    historialTransacciones.push({
+        tipo: 'consignacion',
+        monto: monto,
+        fecha: new Date().toLocaleString()
+    });
+
     return true;
 }
 
 function consultarSaldo() {
     let nombreUsuario = localStorage.getItem("user") || "Usuario desconocido";
-   alert(
+    alert(
         `Consulta de saldo\n` +
         `------------------------------\n` +
         `Usuario: ${nombreUsuario}\n` +
@@ -61,6 +94,10 @@ function consultarSaldo() {
         `------------------------------`
     );
     return saldoCuenta;
+}
+
+function obtenerHistorialTransacciones() {
+    return historialTransacciones;
 }
 
 // Método principal
@@ -75,24 +112,37 @@ export function ejecutarSistemaBancario() {
         let menuInicial = `
 
 MENÚ PRINCIPAL            
-Seleccione una opción (1-4):
+Seleccione una opción (1-5):
 
 1. Retirar dinero                 
 2. Consignar dinero               
 3. Consultar saldo                
-4. Salir                          `;
+4. Consultar movimientos          
+5. Salir                          `;
 
         let opcion = prompt(menuInicial);
         
         switch (opcion) {
             case "1":
-                let montoRetiro = parseFloat(prompt("Ingrese el monto a retirar: $"));
-                retirarDinero(montoRetiro);
+                let inputRetiro = prompt("Ingrese el monto a retirar: $");
+                // Aqui hacemos la opcion de cancelar la operacion con el prompt
+                if (inputRetiro === null) {
+                    alert("Operación de retiro cancelada.");
+                } else {
+                    let montoRetiro = parseFloat(inputRetiro);
+                    retirarDinero(montoRetiro);
+                }
                 break;
                 
             case "2":
-                let montoConsignacion = parseFloat(prompt("Ingrese el monto a consignar: $"));
-                consignarDinero(montoConsignacion);
+                let inputConsignacion = prompt("Ingrese el monto a consignar: $");
+                
+                if (inputConsignacion === null) {
+                    alert("Operación de consignación cancelada.");
+                } else {
+                    let montoConsignacion = parseFloat(inputConsignacion);
+                    consignarDinero(montoConsignacion);
+                }
                 break;
                 
             case "3":
@@ -100,6 +150,10 @@ Seleccione una opción (1-4):
                 break;
                 
             case "4":
+                consultarMovimientos();
+                break;
+                
+            case "5":
                 alert(
                     `Gracias por usar nuestro sistema bancario\n` +
                     `Hasta luego`
@@ -108,8 +162,10 @@ Seleccione una opción (1-4):
                 break;
                 
             default:
-                alert("Opción inválida. Por favor seleccione una opción entre 1 y 4.");
+                alert("Opción inválida. Por favor seleccione una opción entre 1 y 5.");
         }
         
     }
 }
+
+export { retirarDinero, consignarDinero, obtenerHistorialTransacciones };
